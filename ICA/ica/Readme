@@ -1,0 +1,38 @@
+ica_f.m bsepf2 is the main program and it needs 
+
+correlation.m
+decorrelation.m
+permutation.m
+sepfilter.m.
+
+You also need to visit
+
+ftp://sig.enst.fr/pub/jfc/Algo/Joint_Diag/
+
+and get a matlab code "joint_diag.m". this is by Jean-Fran\c{c}ois
+Cardoso. You have to put the code under this directory "ica".
+
+usage is 
+
+function [Y1,Y2] = ica_f(X,NFFT,FS,OVERLAP,N)
+
+where 
+
+X       : is a ".wav" data (You should use 16kHz sampling rate). 
+NFFT    : number of the FFT points.
+FS      : sampling rate (it should be 16000 Again..)
+OVERLAP : overlap of the window function, if sampling rate 16kHz, it
+	should be NFFT-20.
+N	: number of the matrixes to be simultaneous diagonalized. 40
+	is my recommendation.
+
+I use this ica_f in the following way. 
+
+ >> X=wavread('***.wav')
+
+ >> [Y1,Y2] = ica_f(X,512,16000,492,40); 
+
+X_linear.wav, X_room.wav are for test use. X_linear is an instantaneous
+mixture, and X_room is a convolutive mixture. 
+
+Shiro Ikeda, shiro@ikeda.cc
